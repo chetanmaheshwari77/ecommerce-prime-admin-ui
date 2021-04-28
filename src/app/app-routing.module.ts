@@ -12,16 +12,16 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
         pathMatch: 'full'
       },
       {
         path: 'product',
-        loadChildren: './product/product.module#ProductModule'
+        loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
       },
       {
         path: 'order',
-        loadChildren: './order/order.module#OrderModule'
+        loadChildren: () => import('./order/order.module').then(m => m.OrderModule)
       }
     ]
   },
@@ -31,7 +31,7 @@ const routes: Routes = [
     children: [
         {
             path: 'authentication',
-            loadChildren: './authentication/authentication.module#AuthenticationModule'
+            loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
         }
     ]
   },
